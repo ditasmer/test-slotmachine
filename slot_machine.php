@@ -8,4 +8,20 @@ Tres sietes → 100 veces la apuesta
 Tres figuras iguales (a excepción del siete) → 6 veces la apuesta
 Dos sietes → 4 veces la apuesta
 Dos figuras iguales (a excepción del siete) → 2 veces la apuesta*/
+
+$capital = 100;
+$partidas = 3;
+$dinero = $capital;
+$dinero_inicial = $dinero;
+
+//comprobar que puede jugar
+if(($dinero <= 0) || ($dinero >= $dinero_inicial*2)){
+//No puede jugar mas
+	echo "Fin de la partida";
+}else{
+//Puede seguir jugando
+	echo "El capital inicial es: $capital";
+	
+
+}
 ?>
