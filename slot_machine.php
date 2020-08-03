@@ -9,27 +9,33 @@ Tres figuras iguales (a excepción del siete) → 6 veces la apuesta
 Dos sietes → 4 veces la apuesta
 Dos figuras iguales (a excepción del siete) → 2 veces la apuesta*/
 
-$capital = 100;
+$capital_inicial = 100;
+$capital= $capital_inicial;
 $partidas = 3;
-$dinero = $capital;
-$dinero_inicial = $dinero;
+$partida = 0;
+$apuesta = 10;
 $fin_partidas = false;
 $fin_capital = false;
+$ganancia = 0;
+$figuras = '';
 
-
+echo "El capital inicial es: $capital_inicial \n";
 //comprobar que puede jugar por capital y partidas
 while(!$fin_partidas && !$fin_capital){
-	//Puede seguir jugando
-	echo "Jugar";
+	$partida++;
+	//numero de jugada
+	echo "Partida: $partida";
+	//Capital actual
+	$capital=$ganancia + $capital;
+	echo "Capital total: $capital";
 
-
-	$partidas--;
-	if($partidas == 0){
+	//valida situacion partida y capital actual
+	if($partida == $partidas){
 		$fin_partidas = true;
 		//No puede jugar mas
 		echo "Fin de la partida";
 	}
-	if(($dinero <= 0) || ($dinero >= $dinero_inicial*2)){
+	if(($capital <= 0) || ($capital >= $capital_inicial*2)){
 		$fin_capital = true;
 	}
 	
