@@ -42,7 +42,15 @@ while(!$fin_capital){
 	$num3 = rand(0, 8);
 
 	//mostrar imagenes --> numeros (echo de <img>)
-	echo "$num1 $num2 $num3<br>";
+	//echo "$num1 $num2 $num3<br>";
+	$img1 = "<img src='img_slot/$num1.png'>";
+	$img2 = "<img src='img_slot/$num2.png'>";
+	$img3 = "<img src='img_slot/$num3.png'><br>";
+
+	echo $img1;
+	echo $img2;
+	echo $img3;
+
 	$tipo_premio = 0;
 	if(($num1 == $num2) || ($num1 == $num3) || ($num2 == $num3)){
 		if($num1 == 7){
