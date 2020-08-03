@@ -13,14 +13,25 @@ $capital = 100;
 $partidas = 3;
 $dinero = $capital;
 $dinero_inicial = $dinero;
+$fin_partidas = false;
+$fin_capital = false;
 
-//comprobar que puede jugar
-if(($dinero <= 0) || ($dinero >= $dinero_inicial*2)){
-//No puede jugar mas
-	echo "Fin de la partida";
-}else{
-//Puede seguir jugando
-	echo "El capital inicial es: $capital";
+
+//comprobar que puede jugar por capital y partidas
+while(!$fin_partidas && !$fin_capital){
+	//Puede seguir jugando
+	echo "Jugar";
+
+
+	$partidas--;
+	if($partidas == 0){
+		$fin_partidas = true;
+		//No puede jugar mas
+		echo "Fin de la partida";
+	}
+	if(($dinero <= 0) || ($dinero >= $dinero_inicial*2)){
+		$fin_capital = true;
+	}
 	
 
 }
