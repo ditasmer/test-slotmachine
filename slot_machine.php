@@ -21,15 +21,17 @@ $num1 = '';
 $num2 = '';
 $num3 = '';
 
-echo "El capital inicial es: $capital_inicial \n";
+echo "El capital inicial es: $capital_inicial ";
+echo "Apuesta: $apuesta<br>";
+echo "---------------------<br>";
 //comprobar que puede jugar por capital y partidas
 while(!$fin_capital){
 	$partida++;
 	//numero de jugada
-	echo "Partida: $partida";
+	echo "Jugada núm: $partida <br>";
 	//Capital antes
 	$capital=$ganancia + $capital;
-	echo "Capital total: $capital";
+	echo "Capital actual: $capital <br>";
 
 	//restar la apuesta del capital
 	$capital = $capital - $apuesta;
@@ -40,16 +42,60 @@ while(!$fin_capital){
 	$num3 = rand(0, 8);
 
 	//mostrar imagenes --> numeros (echo de <img>)
-	echo "$num1 $num2 $num3";
+	echo "$num1 $num2 $num3<br>";
+	$tipo_premio = 0;
+	if(($num1 == $num2) || ($num1 == $num3) || ($num2 == $num3)){
+		if($num1 == 7){
+			//Dos sietes
+			$tipo_premio = 3;
+		}else{
+			//Dos iguales
+			$tipo_premio = 4;
+		}
+	}else{
+		if(($num1 == $num2) && ($num1 == $num3) && ($num2 == $num3)){
+			if($num1 == 7){
+				//tres sietes
+				$tipo_premio = 1;
+			}else{
+				//tres iguales
+				$tipo_premio = 2;
+			}	
+		}
+	}
 
 	//comprobar si hay premio
-
 	//suma importe premio al capital
+	switch ($tipo_premio) {
+		case '1':
+			//tres sietes
+			$ganancia = $apuesta * 100;
+			break;
+		case '2':
+			//tres figuras iguales (-7)
+			$ganancia = $apuesta*6;
+			break;
+		case '3':
+			//dos sietes
+			$ganancia = $apuesta*4;
+			break;
+		case '4':
+			//dos figuras iguales (-7)
+			$ganancia = $apuesta*2;
+			break;
+		
+		default:
+			$ganancia = 0;
+			break;
+	}
 
 	//muestra premio
+	echo "Premio: $ganancia<br>";
 
 	//muestra capital después de jugada
-	echo "Capital total: $capital";
+	$capital = $capital + $ganancia;
+	echo "Capital después de jugar: $capital<br>";
+	echo "---------------------<br>";
 
 	//valida capital actual
 	if(($capital <= 0) || ($capital >= $capital_inicial*2)){
