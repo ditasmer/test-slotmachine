@@ -52,26 +52,25 @@ while(!$fin_capital){
 	echo $img3;
 
 	$tipo_premio = 0;
-	if(($num1 == $num2) || ($num1 == $num3) || ($num2 == $num3)){
-		if($num1 == 7){
-			//Dos sietes
-			$tipo_premio = 3;
-		}else{
-			//Dos iguales
-			$tipo_premio = 4;
-		}
-	}else{
-		if(($num1 == $num2) && ($num1 == $num3) && ($num2 == $num3)){
-			if($num1 == 7){
+	if(($num1 == $num2) && ($num1 == $num3) && ($num2 == $num3)){
+		if($num1 == 8){
 				//tres sietes
 				$tipo_premio = 1;
 			}else{
 				//tres iguales
 				$tipo_premio = 2;
-			}	
+			}
+	}else{
+		if(($num1 == $num2) || ($num1 == $num3) || ($num2 == $num3)){
+			if($num1 == 8){
+				//Dos sietes
+				$tipo_premio = 3;
+			}else{
+				//Dos iguales
+				$tipo_premio = 4;
+			}
 		}
 	}
-
 	//comprobar si hay premio
 	//suma importe premio al capital
 	switch ($tipo_premio) {
